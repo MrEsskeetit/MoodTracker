@@ -1,108 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/entryLayout"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <!-- Notatka -->
-    <EditText
-        android:id="@+id/noteEditText"
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Co się dziś wydarzyło?"
-        android:inputType="textMultiLine"
-        android:minLines="2"
-        android:padding="8dp"
-        android:background="@android:drawable/edit_text" />
+        android:layout_height="wrap_content">
 
-    <!-- Nastrój -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Wybierz nastrój:"
-        android:layout_marginTop="12dp" />
+        <EditText
+            android:id="@+id/et_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Co się dziś wydarzyło?" />
 
-    <RadioGroup
-        android:id="@+id/moodRadioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        <RadioGroup
+            android:id="@+id/rg_mood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
 
-        <RadioButton
-            android:id="@+id/moodHappy"
+            <RadioButton android:id="@+id/rb_happy" android:text="Wesoły" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            <RadioButton android:id="@+id/rb_neutral" android:text="Przeciętny" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            <RadioButton android:id="@+id/rb_sad" android:text="Smutny" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </RadioGroup>
+
+        <Spinner
+            android:id="@+id/spinner_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" />
+
+        <CheckBox
+            android:id="@+id/cb_slept_well"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wesoły" />
+            android:text="Dzisiaj spałem dobrze"
+            android:layout_marginTop="16dp" />
 
-        <RadioButton
-            android:id="@+id/moodNeutral"
+        <CheckBox
+            android:id="@+id/cb_physical_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Przeciętny" />
+            android:text="Byłem aktywny fizycznie" />
 
-        <RadioButton
-            android:id="@+id/moodSad"
+        <RatingBar
+            android:id="@+id/rating_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Smutny" />
-    </RadioGroup>
+            android:numStars="5"
+            android:stepSize="1"
+            android:layout_marginTop="16dp" />
 
-    <!-- Kategoria -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kategoria wydarzenia:"
-        android:layout_marginTop="12dp" />
+        <Switch
+            android:id="@+id/switch_important"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chcę zapisać ten dzień jako ważny"
+            android:layout_marginTop="16dp" />
 
-    <Spinner
-        android:id="@+id/categorySpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Zapisz wpis"
+            android:layout_marginTop="24dp" />
 
-    <!-- CheckBoxy -->
-    <CheckBox
-        android:id="@+id/sleptCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Spałem dobrze"
-        android:layout_marginTop="12dp" />
-
-    <CheckBox
-        android:id="@+id/activeCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Byłem aktywny fizycznie" />
-
-    <!-- Ocena dnia -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ocena dnia:"
-        android:layout_marginTop="12dp" />
-
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numStars="5"
-        android:stepSize="1.0" />
-
-    <!-- Switch -->
-    <Switch
-        android:id="@+id/importantSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Zapisz jako ważny dzień"
-        android:layout_marginTop="12dp" />
-
-    <!-- Przycisk zapisu -->
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Zapisz"
-        android:layout_marginTop="20dp" />
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

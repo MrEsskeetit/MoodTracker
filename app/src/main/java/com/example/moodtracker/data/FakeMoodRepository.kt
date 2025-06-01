@@ -1,4 +1,4 @@
-package com.example.moodtracker.data
+package com.moodtracker.data
 
 import java.util.UUID
 
@@ -11,5 +11,9 @@ object FakeMoodRepository {
 
     fun getMoodById(id: UUID): MoodEntry? {
         return moodList.find { it.id == id }
+    }
+
+    fun deleteMood(id: UUID) {
+        moodList.removeAll { it.id == id }
     }
 }

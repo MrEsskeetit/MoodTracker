@@ -1,60 +1,72 @@
-package com.example.moodtracker.fragments
+package com.moodtracker.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.moodtracker.R
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.moodtracker.R
+import com.moodtracker.data.FakeMoodRepository
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MoodDetailsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MoodDetailsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val args: MoodDetailsFragmentArgs by navArgs()
+
+    private lateinit var dateText: TextView
+    private lateinit var moodText: TextView
+    private lateinit var categoryText: TextView
+    private lateinit var noteText: TextView
+    private lateinit var sleptWellText: TextView
+    private lateinit var physicalActivityText: TextView
+    private lateinit var ratingText: TextView
+    private lateinit var deleteButton: Button
+    private lateinit var shareButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mood_details, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_mood_details, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MoodDetailsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MoodDetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        dateText = view.findViewById(R.id.tv_date)
+        moodText = view.findViewById(R.id.tv_mood)
+        categoryText = view.findViewById(R.id.tv_category)
+        noteText = view.findViewById(R.id.tv_note)
+        sleptWellText = view.findViewById(R.id.tv_slept_well)
+        physicalActivityText = view.findViewById(R.id.tv_physical_activity)
+        ratingText = view.findViewById(R.id.tv_rating)
+        deleteButton = view.findViewById(R.id.btn_delete)
+        shareButton = view.findViewById(R.id.btn_share)
+
+        val moodEntry = FakeMoodRepository.getMoodById(java.util.UUID.fromString(args.moodId))
+
+        if (moodEntry != null) {
+            dateText.text = moodEntry.date.toString()
+            moodText.text = moodEntry.mood.name
+            categoryText.text = moodEntry.category
+            noteText.text = moodEntry.note
+            sleptWellText.text = "Spałem dobrze: ${if (moodEntry.sleptWell) "Tak" else "Nie"}"
+            physicalActivityText.text = "Aktywny fizycznie: ${if (moodEntry.physicalActivity) "Tak" else "Nie"}"
+            ratingText.text = "Ocena dnia: ${moodEntry.rating}"
+        }
+
+        deleteButton.setOnClickListener {
+            if (moodEntry != null) {
+                FakeMoodRepository.deleteMood(moodEntry.id)
+                Toast.makeText(requireContext(), "Wpis usunięty", Toast.LENGTH_SHORT).show()
+                findNavController().navigateUp()
             }
+        }
+
+        shareButton.setOnClickListener {
+            Toast.makeText(requireContext(), "Funkcja udostępniania jeszcze nie zaimplementowana", Toast.LENGTH_SHORT).show()
+        }
+
+        return view
     }
 }
