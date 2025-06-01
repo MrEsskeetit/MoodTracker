@@ -1,77 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+    <TextView
+        android:id="@+id/mood_text"
+        android:textSize="24sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/tv_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Data" />
+    <TextView
+        android:id="@+id/note_text"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/tv_mood"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nastrój"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"/>
-
-        <TextView
-            android:id="@+id/tv_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kategoria"
-            android:layout_marginTop="8dp"/>
-
-        <TextView
-            android:id="@+id/tv_note"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Notatka"
-            android:layout_marginTop="8dp"/>
-
-        <TextView
-            android:id="@+id/tv_slept_well"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Spałem dobrze"
-            android:layout_marginTop="8dp"/>
-
-        <TextView
-            android:id="@+id/tv_physical_activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Byłem aktywny fizycznie"
-            android:layout_marginTop="8dp"/>
-
-        <TextView
-            android:id="@+id/tv_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ocena dnia"
-            android:layout_marginTop="8dp"/>
-
-        <Button
-            android:id="@+id/btn_delete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Usuń"
-            android:layout_marginTop="16dp" />
-
-        <Button
-            android:id="@+id/btn_share"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Udostępnij"
-            android:layout_marginTop="8dp" />
-
-    </LinearLayout>
-</ScrollView>
+    <TextView
+        android:id="@+id/date_text"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

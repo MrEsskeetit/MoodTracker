@@ -1,21 +1,14 @@
 package com.moodtracker.data
 
-import java.util.UUID
-import java.util.Date
+import java.util.*
 
 data class MoodEntry(
     val id: UUID = UUID.randomUUID(),
-    val date: Date = Date(),
-    val note: String,
     val mood: Mood,
-    val category: String,
-    val sleptWell: Boolean,
-    val physicalActivity: Boolean,
-    val rating: Int,
-    val important: Boolean,
-    val userSignature: String? = null
+    val note: String?,
+    val date: Date = Date()
 )
 
 enum class Mood {
-    HAPPY, NEUTRAL, SAD
+    HAPPY, SAD, ANGRY, NEUTRAL, EXCITED
 }

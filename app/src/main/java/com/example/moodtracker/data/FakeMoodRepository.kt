@@ -1,19 +1,19 @@
 package com.moodtracker.data
 
-import java.util.UUID
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import java.util.*
 
-object FakeMoodRepository {
-    val moodList = mutableListOf<MoodEntry>()
+class FakeMoodRepository {
+    private val moodList = mutableListOf<MoodEntry>()
+    private val moodsLiveData = MutableLiveData<List<MoodEntry>>(moodList)
 
-    fun addMood(entry: MoodEntry) {
-        moodList.add(0, entry)
+    fun addMood(moodEntry: MoodEntry) {
+        moodList.add(0, moodEntry)
+        moodsLiveData.value = moodList.toList()
     }
 
-    fun getMoodById(id: UUID): MoodEntry? {
-        return moodList.find { it.id == id }
-    }
+    fun getAllMoods(): LiveData<List<MoodEntry>> = moodsLiveData
 
-    fun deleteMood(id: UUID) {
-        moodList.removeAll { it.id == id }
-    }
+    fun getMoodById(id: UUID): MoodEntry? = moodList.find { it.id == id }
 }
