@@ -1,14 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/entryLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MoodEntryFragment">
+    android:padding="16dp"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Notatka -->
+    <EditText
+        android:id="@+id/noteEditText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:hint="Co się dziś wydarzyło?"
+        android:inputType="textMultiLine"
+        android:minLines="2"
+        android:padding="8dp"
+        android:background="@android:drawable/edit_text" />
 
-</FrameLayout>
+    <!-- Nastrój -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wybierz nastrój:"
+        android:layout_marginTop="12dp" />
+
+    <RadioGroup
+        android:id="@+id/moodRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/moodHappy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wesoły" />
+
+        <RadioButton
+            android:id="@+id/moodNeutral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Przeciętny" />
+
+        <RadioButton
+            android:id="@+id/moodSad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Smutny" />
+    </RadioGroup>
+
+    <!-- Kategoria -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kategoria wydarzenia:"
+        android:layout_marginTop="12dp" />
+
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- CheckBoxy -->
+    <CheckBox
+        android:id="@+id/sleptCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spałem dobrze"
+        android:layout_marginTop="12dp" />
+
+    <CheckBox
+        android:id="@+id/activeCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Byłem aktywny fizycznie" />
+
+    <!-- Ocena dnia -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ocena dnia:"
+        android:layout_marginTop="12dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0" />
+
+    <!-- Switch -->
+    <Switch
+        android:id="@+id/importantSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zapisz jako ważny dzień"
+        android:layout_marginTop="12dp" />
+
+    <!-- Przycisk zapisu -->
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zapisz"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>
